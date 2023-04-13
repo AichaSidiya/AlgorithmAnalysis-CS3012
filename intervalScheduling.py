@@ -1,14 +1,8 @@
-#!/usr/bin/env python
-# coding: utf-8
-
-# In[8]:
-
-
-#function that returns non overlapping intervals
+#function that returns maximum number of non overlapping intervals
 def nonOverlappingInterval(arr):
     end = float('-inf')
     
-    nonOverlappingInterval = []
+    nonOverlappingInterval = 0
     
     #loop through the sorted time intervals that are sorted according to their end time
     for subList in sorted(arr, key=lambda x: x[1]):
@@ -16,17 +10,13 @@ def nonOverlappingInterval(arr):
         #if the begin time of the current interval is greater or equal then the highest end time recorded till now
         if subList[0] >= end: 
             
-            #append this interval to the list of non-overlapping intervals
-            nonOverlappingInterval.append(subList)
+            #increment the number of non-overlapping intervals
+            nonOverlappingInterval += 1
             #update the max end time to the end time of the current interval
             end = subList[1]
          
-    #return the list of non overlapping intervals
+    #return the maximum number of non overlapping intervals
     return nonOverlappingInterval 
-
-
-# In[9]:
-
 
 #program driver main function 
 def main():
@@ -38,15 +28,26 @@ def main():
     #loop through file and store all elements as a list of sublist of intervals with begin and end time
     with open(filename, 'r') as file:
         timeList = [list(map(int, line.strip().split(','))) for line in file]
-        print("Time list: ",timeList) #print the original list
+        print("Current number of time intervals: ", len(timeList)) #print the original number of intervals
         print()
-    print("Non overlapping time list: ", nonOverlappingInterval(timeList)) #print the non overlapping time intervals
+    print("The maximum number of non overlapping intervals is: ", nonOverlappingInterval(timeList)) #print the non overlapping time intervals
         
-main()
 
+#this function call the main and repeat it as long as answer=yes
+def repeat():
 
-# In[ ]:
+    print('\nDo you want to fix a schedule? ')
+    answer = input('y or Y: ')
 
+    while answer == 'y' or answer == 'Y':
 
+        main()
 
+        print('\nDo you want to fix another schedule? ')
+        answer = input('y or Y: ')
 
+    if answer != 'y' or answer != 'Y':
+
+        print('\n*********************\tThank you, bye\t**************************\n')
+
+repeat()
