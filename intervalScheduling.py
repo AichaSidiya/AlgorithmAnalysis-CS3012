@@ -3,9 +3,12 @@ def nonOverlappingInterval(arr):
     end = float('-inf')
     
     nonOverlappingInterval = 0
-    
-    #loop through the sorted time intervals that are sorted according to their end time
-    for subList in sorted(arr, key=lambda x: x[1]):
+
+    #sort the list of time intervals according to their end time
+    arr.sort(key = lambda x: x[1])
+
+    #loop through the sorted time intervals 
+    for subList in arr:
         
         #if the begin time of the current interval is greater or equal then the highest end time recorded till now
         if subList[0] >= end: 
@@ -26,12 +29,15 @@ def main():
     filename = input('\nPlease enter the name of your input file: ') + '.txt'
     print()
     #loop through file and store all elements as a list of sublist of intervals with begin and end time
-    with open(filename, 'r') as file:
-        timeList = [list(map(int, line.strip().split(','))) for line in file]
-        print("Current number of time intervals: ", len(timeList)) #print the original number of intervals
-        print()
-    print("The maximum number of non overlapping intervals is: ", nonOverlappingInterval(timeList)) #print the non overlapping time intervals
-        
+    try:
+        with open(filename, 'r') as file:
+            timeList = [list(map(int, line.strip().split(','))) for line in file]
+            print("Current number of time intervals: ", len(timeList)) #print the original number of intervals
+            print()
+        print("The maximum number of non overlapping intervals is: ", nonOverlappingInterval(timeList)) #print the non overlapping time intervals
+    except FileNotFoundError:
+        msg = "Sorry, the file "+ filename + " does not exist."
+        print(msg)     
 
 #this function call the main and repeat it as long as answer=yes
 def repeat():
