@@ -5,7 +5,7 @@
 This poject is a nterval scheduling program. The purpose of this project is to find the non overlapping intervals from a file that contains a list of intervals with start and end time.
 
 ## Description
-Upon executing the program the user will be prompted to enter the name of his text file containing the list of time intervals. The program will print the user the current number of intervals it will then print the maximum number of non overlaping intervals. 
+Upon executing the program the user will be prompted to enter the name of his text file containing the list of time intervals. The program will print to the user the current number of intervals it will then print the maximum number of non overlaping intervals. 
 
 ## Built With
 * Python
