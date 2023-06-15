@@ -1,5 +1,6 @@
 <!--Title-->
 # Interval Scheduling
+Note: this reposotry include other codes for algorithms such as merge sort 
 ## Purpose
 <!--Purpose of the project-->
 This poject is a nterval scheduling program. The purpose of this project is to find the non overlapping intervals from a file that contains a list of intervals with start and end time.
